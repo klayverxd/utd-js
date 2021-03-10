@@ -12,16 +12,35 @@
   <nav></nav>
 
   <main>
-    <div>
-      <h1>Criando uma página HTML</h1>
-      <h2>Conhecendo as tags</h2>
-      <p>
-        <i>Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</i> , when an unknown printer took a galley of type and scrambled it to make a type specimen book. <br /> has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of <strong>sheets containing Lorem Ipsum</strong>  passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-      </p>
-    </div>
-    <video width="400px" height="280" controls>
-      <source src="https://www.youtube.com/watch?v=cETXqQGnIc8&ab_channel=UniversidadedoTrabalhoDigital">
-    </video>
+    <form action="" method="">
+      <fieldset>
+        <legend>Cadastro usuário</legend>
+        <label for="nome_form">Nome: </label>
+        <input id="nome_form" type="text">
+        <br/>
+  
+        <label for="idade_form">Idade: </label>
+        <input id="idade_form" type="number">
+        <br/>
+  
+        <p>Linguagem de programação preferida:</p>
+        <label><input type="radio" name="linguagem" value="javascript">JavaScript</label>
+        <label><input type="radio" name="linguagem" value="python">Python</label>
+        <label><input type="radio" name="linguagem" value="ruby">Ruby</label>
+        <label><input type="radio" name="linguagem" value="php">PHP</label>
+  
+        <p>Área de interesse:</p>
+        <label><input type="checkbox">Frontend</label>
+        <label><input type="checkbox">Backend</label>
+        <label><input type="checkbox">Banco de dados</label>
+        <label><input type="checkbox">UX design</label>
+        <br/>
+  
+        <input type="submit" value="Enviar">
+      </fieldset>
+
+
+    </form>
   </main>
 
   <footer></footer>

@@ -5,3 +5,5 @@ const env = {
 	host: 'localhost',
 	dialect: 'mysql',
 };
+
+module.exports = env;

@@ -56,3 +56,72 @@ exports.getCliente = (req, res) => {
 			});
 		});
 };
+
+exports.deleteCliente = async (req, res) => {
+	try {
+		let clienteId = req.params.id;
+		let cliente = await Cliente.findByPk(clienteId);
+
+		if (!cliente) {
+			res.status(404).json({
+				message: 'Não existe nenhum cliente com o Id: ' + clienteId,
+				error: '404',
+			});
+		} else {
+			await cliente.destroy();
+			res.status(200).json('cliente deletado com sucesso.');
+		}
+	} catch (error) {
+		res.status(500).json({
+			message:
+				'Error -> Não foi possível deletar o cliente com o Id:' +
+				req.params.id,
+			error: error.message,
+		});
+	}
+};
+
+exports.updateCliente = async (req, res) => {
+	try {
+		let cliente = await Cliente.findByPk(req.body.id);
+
+		if (!cliente) {
+			res.status(404).json({
+				message:
+					'Não foi encontrando nenhum cliente com id: ' + clienteId,
+				error: '404',
+			});
+		} else {
+			let updatedObject = {
+				nome: req.body.nome,
+				email: req.body.email,
+				idade: req.body.idade,
+			};
+
+			let result = await Cliente.update(updatedObject, {
+				returning: true,
+				where: {id: req.body.id},
+				attributes: ['id', 'nome', 'email', 'idade'],
+			});
+
+			// return the response to client
+			if (!result) {
+				res.status(500).json({
+					message:
+						'Error -> Não houve alteração no cliente Id: ' +
+						req.params.id,
+					error: 'Não pode ser alterado',
+				});
+			}
+
+			res.status(200).json('Cliente alterado com sucesso!');
+		}
+	} catch (error) {
+		res.status(500).json({
+			message:
+				'Error -> Não pôde ser alterado o cliente com o id: ' +
+				req.params.id,
+			error: error.message,
+		});
+	}
+};

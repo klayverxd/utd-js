@@ -7,6 +7,6 @@ router.post('/api/cliente', clientes.createCliente);
 router.get('/api/cliente/:id', clientes.getCliente);
 router.get('/api/clientes', clientes.clientes);
 router.put('/api/cliente', clientes.updateCliente);
-router.delete('/api/cliente', clientes.deleteCliente);
+router.delete('/api/cliente/:id', clientes.deleteCliente);
 
 module.exports = router;

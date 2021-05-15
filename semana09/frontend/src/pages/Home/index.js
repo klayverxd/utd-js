@@ -8,22 +8,28 @@ function Home() {
 
 	useEffect(() => {
 		async function getRegistros() {
-			const response = await api.get(`/clientes`)
+			try {
+				const response = await api.get(`/clientes`)
 
-			// response.data.map(res => {
-			// 	return setRegistros([...registros, res])
-			// })
-
-			setRegistros(response.data)
+				setRegistros(response.data)
+			} catch (err) {
+				console.log(err)
+			}
 		}
 
 		getRegistros()
-	}, [registros])
+	}, [])
 
 	async function deleteCliente(id) {
-		await api.delete(`/cliente/${id}`)
+		try {
+			await api.delete(`cliente/${id}`)
 
-		alert('Usuário deletado com sucesso.')
+			setRegistros(state => state.filter(registro => registro.id !== id))
+
+			alert('Usuario deletado com sucesso.')
+		} catch (err) {
+			console.log(err)
+		}
 	}
 
 	return (

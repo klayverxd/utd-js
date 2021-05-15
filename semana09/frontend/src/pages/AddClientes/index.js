@@ -25,7 +25,7 @@ function AddClientes() {
 			email: state.cad_email,
 		}
 
-		await api.post(`/cliente`, Cliente).then(console.log(Cliente))
+		await api.post(`/cliente`, Cliente)
 
 		alert('Usuário adicionado com sucesso.')
 
